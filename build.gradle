@@ -14,10 +14,10 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'java'
 
-def versionObj = new Version(major: 0, minor: 1, revision: 9)
+def versionObj = new Version(major: 0, minor: 2, revision: 7)
 
 version = versionObj.toString()
-group = "cf.wynntils"
+group = "com.wynntils"
 archivesBaseName = "Wynntils"
 
 sourceCompatibility = "1.8"
@@ -59,6 +59,9 @@ processResources {
 
 jar {
     from configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }
+    manifest {
+        attributes 'FMLAT': 'wynntils_at.cfg'
+    }
 }
 
 reobfJar {
